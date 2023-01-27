@@ -7,30 +7,46 @@ import { type BuildingData } from "./Building";
 import { Control } from "./Control";
 
 const leftBuildings: BuildingData[] = [
-  { floors: 5, width: 10, depth: 13 },
-  { floors: 3, width: 20, depth: 10 },
-  { floors: 8, width: 10, depth: 20 },
+  { floors: 5, width: 15, depth: 13 },
+  { floors: 3, width: 25, depth: 10, },
+  { floors: 15, width: 10, depth: 20, floorHeight: 3 },
+];
+
+const rightBuildings: BuildingData[] = [
+  { floors: 5, width: 20, depth: 30 },
+  { floors: 6, width: 20, depth: 14 },
+  { floors: 2, width: 10, depth: 14, floorHeight: 8 },
 ];
 
 export function Town() {
   return (
-    <Canvas shadows camera={{ position: [10, 40, 60], far: 1000 }}>
+    <Canvas shadows camera={{ position: [30, 60, 70], far: 1000 }}>
       {/* Objects */}
-      <mesh position-x={-35} position-z={15}>
-        <BuildingRow rotation-y={Math.PI / 2} rowData={leftBuildings} />
-      </mesh>
+      <BuildingRow
+        position-x={-40}
+        position-z={-11}
+        rotation-y={Math.PI / 2}
+        rowData={leftBuildings}
+      />
+      <BuildingRow
+        position-x={40}
+        position-z={-11}
+        rotation-y={-Math.PI / 2}
+        rowData={rightBuildings}
+      />
 
       {/* Environment */}
       <color attach="background" args={[0x222232]} />
       <hemisphereLight args={[0x443333, 0xeeeeff, 1]} />
       <ambientLight intensity={0.3} />
-      <Stars radius={300} fade />
-      <fog attach="fog" args={[0x664444, -60, 130]} />
+      <Stars radius={250} fade />
+      <fog attach="fog" args={[0x664444, 2, 140]} />
 
       {/* Plane */}
       <mesh rotation-x={-Math.PI / 2} receiveShadow>
         <circleGeometry args={[500]} />
-        <meshLambertMaterial color={0x252233} />
+        {/* <planeGeometry args={[80, 80]} /> */}
+        <meshLambertMaterial color={0x153322} />
       </mesh>
 
       {/* Controls */}

@@ -29,6 +29,7 @@ export function Building({
           position-y={yPosition}
           width={width}
           depth={depth}
+          height={floorHeight}
         />
       );
     }
