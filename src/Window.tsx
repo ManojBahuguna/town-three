@@ -10,10 +10,10 @@ export function Window({
    */
 
   return (
-    <pointLight castShadow args={[0xbbbbff, 2, 20, 2]} {...props}>
+    <pointLight args={[0xbbbbff, 2, 20, 2]} {...props}>
       <mesh>
         <boxGeometry args={[width, height, 0.5]} />
-        <meshStandardMaterial
+        <meshLambertMaterial
           color={0x0000ff}
           emissive={0xaaaaff}
           emissiveIntensity={1.5}

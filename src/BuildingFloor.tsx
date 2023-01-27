@@ -35,7 +35,7 @@ export function BuildingFloor({
       />
 
       <boxGeometry args={[width, height, depth]} />
-      <meshStandardMaterial args={[{ color: 0x222244 }]} />
+      <meshLambertMaterial args={[{ color: 0x222244 }]} />
     </mesh>
   );
 }
