@@ -4,7 +4,7 @@ import { Building, type BuildingData } from "./Building";
 
 export function BuildingRow({
   rowData,
-  gap = 5,
+  gap = 8,
   ...props
 }: MeshProps & {
   rowData: BuildingData[];

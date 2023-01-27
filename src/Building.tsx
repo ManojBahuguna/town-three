@@ -13,7 +13,7 @@ export function Building({
   floors,
   width,
   depth,
-  floorHeight = 5,
+  floorHeight = 8,
   ...props
 }: MeshProps & BuildingData) {
   const floorMeshes = useMemo(() => {

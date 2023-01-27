@@ -1,39 +1,40 @@
-import { PointLightProps } from "@react-three/fiber";
+import { MeshProps } from "@react-three/fiber";
 import { useEffect, useState } from "react";
 import { randomItem } from "./utils";
+import { getCachedBoxGeometry, getCachedPhongMaterial } from "./caches";
 
-const windowColors = [0xff0000, 0xffff00, 0x00ff00, 0x222244, 0];
+// only keep limited variants so that they can be cached and reused for performance
+const windowColors = [0xff0000, 0xffff00, 0x222244, 0];
+const windowEmissiveIntensities = [0.1, 0.3, 0.6];
 
 export function Window({
   width,
   height,
   ...props
-}: PointLightProps & { width: number; height: number }) {
+}: MeshProps & { width: number; height: number }) {
   const [color] = useState(() => randomItem(windowColors));
-  const [intensity, setIntensity] = useState(
-    Math.max(Math.random() - 0.85, 0) * 10 // initially very small percent of windows will be lit
+  const [intensity, setIntensity] = useState(() =>
+    randomItem(windowEmissiveIntensities)
   );
 
   useEffect(() => {
-    if (Math.random() < 0.2) return; // don't ever change for a small percentage of windows
-
     const intervalRef = setInterval(() => {
-      setIntensity(Math.max(Math.random() - 0.2, 0) * 10);
-    }, Math.random() * 3000 + 1000); // random interval for each window
+      setIntensity(randomItem(windowEmissiveIntensities));
+    }, Math.random() * 2000 + 500); // random interval for each window
 
     return () => clearInterval(intervalRef);
   }, []);
 
   return (
-    <pointLight args={[0xbbbbff, intensity, 20, 2]} {...props}>
-      <mesh>
-        <boxGeometry args={[width, height, 0.5]} />
-        <meshLambertMaterial
-          color={0x000022}
-          emissive={color}
-          emissiveIntensity={intensity}
-        />
-      </mesh>
-    </pointLight>
+    <mesh
+      geometry={getCachedBoxGeometry([width, height, 0.5])}
+      material={getCachedPhongMaterial({
+        color: 0x000022,
+        shininess: 100,
+        emissive: color,
+        emissiveIntensity: intensity,
+      })}
+      {...props}
+    />
   );
 }
