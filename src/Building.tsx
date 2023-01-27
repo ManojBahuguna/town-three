@@ -2,18 +2,20 @@ import { MeshProps } from "@react-three/fiber";
 import { BuildingFloor } from "./BuildingFloor";
 import { useMemo } from "react";
 
+export interface BuildingData {
+  width: number;
+  depth: number;
+  floors: number;
+  floorHeight?: number;
+}
+
 export function Building({
   floors,
   width,
   depth,
   floorHeight = 5,
   ...props
-}: MeshProps & {
-  floors: number;
-  floorHeight?: number;
-  width: number;
-  depth: number;
-}) {
+}: MeshProps & BuildingData) {
   const floorMeshes = useMemo(() => {
     const list = [];
     for (
