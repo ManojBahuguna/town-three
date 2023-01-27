@@ -1,12 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-function App() {
-  return <canvas style={{ background: "#322" }} />;
-}
+import { Town } from "./Town";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <Town />
   </React.StrictMode>
 );
