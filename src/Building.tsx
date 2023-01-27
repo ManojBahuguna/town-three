@@ -40,9 +40,7 @@ export function Building({
 
   return (
     <>
-      <mesh castShadow receiveShadow {...props}>
-        {floorMeshes}
-      </mesh>
+      <mesh {...props}>{floorMeshes}</mesh>
     </>
   );
 }

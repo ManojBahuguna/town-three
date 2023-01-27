@@ -8,7 +8,7 @@ export function BuildingFloor({
   ...props
 }: MeshProps & { width: number; depth: number; height?: number }) {
   return (
-    <mesh {...props}>
+    <mesh castShadow receiveShadow {...props}>
       {/* Front, Rear, Left, Right Windows */}
       <Window
         height={height * 0.6}

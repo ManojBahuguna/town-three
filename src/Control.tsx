@@ -27,10 +27,10 @@ export function Control() {
     };
 
     // limit pan distance
-    controlsRef.current.addEventListener("change", onControlsChange);
+    controlsRef.current?.addEventListener("change", onControlsChange);
 
     return () => {
-      controlsRef.current.removeEventListener("change", onControlsChange);
+      controlsRef.current?.removeEventListener("change", onControlsChange);
     };
   }, []);
 
@@ -39,7 +39,7 @@ export function Control() {
       ref={controlsRef}
       dampingFactor={0.02}
       minDistance={20}
-      maxDistance={110}
+      maxDistance={130}
       maxPolarAngle={Math.PI * 0.49}
     />
   );

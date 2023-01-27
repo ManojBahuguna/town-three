@@ -1,14 +1,12 @@
-import { useEffect, useRef } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls, Stars, useCamera } from "@react-three/drei";
-import { DoubleSide, Vector3 } from "three";
+import { Canvas } from "@react-three/fiber";
+import { Stars } from "@react-three/drei";
 import { BuildingRow } from "./BuildingsRow";
 import { type BuildingData } from "./Building";
 import { Control } from "./Control";
 
 const leftBuildings: BuildingData[] = [
-  { floors: 5, width: 15, depth: 13 },
-  { floors: 3, width: 25, depth: 10, },
+  { floors: 5, width: 12, depth: 12 },
+  { floors: 3, width: 25, depth: 10 },
   { floors: 15, width: 10, depth: 20, floorHeight: 3 },
 ];
 
@@ -37,10 +35,21 @@ export function Town() {
 
       {/* Environment */}
       <color attach="background" args={[0x222232]} />
-      <hemisphereLight args={[0x443333, 0xeeeeff, 1]} />
-      <ambientLight intensity={0.3} />
+      <ambientLight intensity={0.2} />
       <Stars radius={250} fade />
-      <fog attach="fog" args={[0x664444, 2, 140]} />
+      <fog attach="fog" args={[0x443355, 2, 130]} />
+      <directionalLight
+        position={[200, 150, 200]}
+        castShadow
+        color={0xffffff}
+        intensity={0.8}
+        shadow-mapSize-height={1024}
+        shadow-mapSize-width={1024}
+        shadow-camera-top={-100}
+        shadow-camera-bottom={100}
+        shadow-camera-left={-100}
+        shadow-camera-right={100}
+      />
 
       {/* Plane */}
       <mesh rotation-x={-Math.PI / 2} receiveShadow>
