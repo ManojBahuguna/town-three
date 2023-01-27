@@ -33,7 +33,12 @@ export function Town() {
       </mesh>
 
       {/* Controls */}
-      <OrbitControls dampingFactor={0.03} maxDistance={130} enablePan={false} />
+      <OrbitControls
+        dampingFactor={0.02}
+        maxDistance={130}
+        maxPolarAngle={Math.PI * 0.495}
+        enablePan={false}
+      />
     </Canvas>
   );
 }
