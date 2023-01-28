@@ -1,6 +1,7 @@
-import { BoxGeometryProps, MeshPhongMaterialProps } from "@react-three/fiber";
+import { BoxGeometryProps, CylinderGeometryProps } from "@react-three/fiber";
 import {
   BoxGeometry,
+  CylinderGeometry,
   MeshLambertMaterial,
   MeshLambertMaterialParameters,
   MeshPhongMaterial,
@@ -20,6 +21,25 @@ export function getCachedBoxGeometry([
   }
 
   return cachedBoxGeometries[cacheKey];
+}
+
+const cachedCylinderGeometries: Record<string, CylinderGeometry> = {};
+export function getCachedCylinderGeometry([
+  radiusTop,
+  radiusBottom,
+  height,
+]: CylinderGeometryProps["args"] = []) {
+  const cacheKey = [radiusTop, radiusBottom, height].join("|");
+
+  if (!cachedCylinderGeometries[cacheKey]) {
+    cachedCylinderGeometries[cacheKey] = new CylinderGeometry(
+      radiusTop,
+      radiusBottom,
+      height
+    );
+  }
+
+  return cachedCylinderGeometries[cacheKey];
 }
 
 const cachedPhongMaterials: Record<string, MeshPhongMaterial> = {};
