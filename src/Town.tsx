@@ -5,6 +5,7 @@ import { type BuildingData } from "./Building";
 import { Control } from "./Control";
 import { useState } from "react";
 import { Road } from "./Road";
+import { InfoBoard } from "./InfoBoard";
 
 // less variants used so that cached geometries can be reused
 const wideFloor = { width: 24, depth: 30 };
@@ -32,7 +33,7 @@ export function Town() {
       camera={{ position: [30, 80, 70], far: 700 }}
     >
       <PerformanceMonitor
-        onChange={({ factor }) => setDpr(Math.round(0.5 + 1.5 * factor))}
+        onChange={({ factor }) => setDpr(Math.round(0.4 + 1 * factor))}
       />
 
       {/* Objects */}
@@ -48,25 +49,26 @@ export function Town() {
         rotation-y={-Math.PI / 2}
         rowData={rightBuildings}
       />
-      <Road position-z={50} position-y={0.5} />
+      <Road position-z={50} />
+      <InfoBoard position-z={35} position-x={3} />
 
       {/* Environment */}
       <color attach="background" args={[0x222202]} />
       <Sky
         turbidity={0.8}
         rayleigh={0.00001}
-        azimuth={0.34}
-        inclination={0.56}
-        mieCoefficient={0.0003}
+        azimuth={0.32}
+        inclination={0.6}
+        mieCoefficient={0.0002}
       />
       <Stars radius={250} />
-      <fog attach="fog" args={[0x443355, 2, 130]} />
+      <fog attach="fog" args={[0x443355, 0, 130]} />
       <ambientLight intensity={0.2} />
       <directionalLight
         position={[50, 80, -100]}
         castShadow
         color={0xffffff}
-        intensity={0.8}
+        intensity={2}
         shadow-mapSize-height={512}
         shadow-mapSize-width={512}
         shadow-camera-top={-50}

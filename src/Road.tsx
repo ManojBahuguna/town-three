@@ -32,6 +32,27 @@ export function Road(props: MeshProps) {
     return list;
   }, []);
 
+  const streetLights = useMemo(() => {
+    const startAt = -110;
+    const gap = 40;
+    const count = 6;
+
+    const list = [];
+    let posZ = -8;
+    for (let posX = startAt, i = 0; i < count; posX += gap, i++) {
+      list.push(
+        <StreetLight
+          key={posX + posZ}
+          position-x={posX}
+          position-z={posZ}
+          rotation-y={posZ > 0 ? Math.PI : 0}
+        />
+      );
+      posZ = -posZ;
+    }
+    return list;
+  }, []);
+
   return (
     <mesh
       receiveShadow
@@ -39,14 +60,7 @@ export function Road(props: MeshProps) {
       material={getCachedPhongMaterial({ color: 0x110008, shininess: 2 })}
       {...props}
     >
-      <StreetLight position-x={-100} position-z={-8} />
-      <StreetLight position-x={-60} position-z={8} rotation-y={Math.PI} />
-
-      <StreetLight position-x={-20} position-z={-8} />
-      <StreetLight position-x={20} position-z={8} rotation-y={Math.PI} />
-
-      <StreetLight position-x={60} position-z={-8} />
-      <StreetLight position-x={100} position-z={8} rotation-y={Math.PI} />
+      {streetLights}
 
       {/* Left Road line */}
       <mesh

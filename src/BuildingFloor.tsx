@@ -12,7 +12,7 @@ export function BuildingFloor({
     <mesh
       castShadow
       receiveShadow
-      material={getCachedLambertMaterial({ color: 0x25222a })}
+      material={getCachedLambertMaterial({ color: 0x251115 })}
       geometry={getCachedBoxGeometry([width, height, depth])}
       {...props}
     >
