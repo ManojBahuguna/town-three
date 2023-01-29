@@ -1,6 +1,10 @@
 import { type MeshProps } from "@react-three/fiber";
 import { StreetLight } from "./StreetLight";
-import { getCachedBoxGeometry, getCachedLambertMaterial, getCachedPhongMaterial } from "./caches";
+import {
+  getCachedBoxGeometry,
+  getCachedLambertMaterial,
+  getCachedPhongMaterial,
+} from "./caches";
 import { useMemo } from "react";
 
 const ROAD_LENGTH = 400;
@@ -9,11 +13,11 @@ function RoadMarking(props: MeshProps) {
   return (
     <mesh
       receiveShadow
-      geometry={getCachedBoxGeometry([8, 1, .5])}
+      geometry={getCachedBoxGeometry([8, 1, 0.5])}
       material={getCachedLambertMaterial({
         color: 0xffffff,
       })}
-      position-y={0.1}
+      position-y={0.05}
       {...props}
     />
   );
@@ -43,6 +47,28 @@ export function Road(props: MeshProps) {
 
       <StreetLight position-x={60} position-z={-8} />
       <StreetLight position-x={100} position-z={8} rotation-y={Math.PI} />
+
+      {/* Left Road line */}
+      <mesh
+        receiveShadow
+        geometry={getCachedBoxGeometry([ROAD_LENGTH, 1, 0.5])}
+        material={getCachedLambertMaterial({
+          color: 0xffffff,
+        })}
+        position-y={0.05}
+        position-z={9}
+      />
+
+      {/* Right Road Line */}
+      <mesh
+        receiveShadow
+        geometry={getCachedBoxGeometry([ROAD_LENGTH, 1, 0.5])}
+        material={getCachedLambertMaterial({
+          color: 0xffffff,
+        })}
+        position-y={0.05}
+        position-z={-9}
+      />
 
       {roadMarkings}
     </mesh>
