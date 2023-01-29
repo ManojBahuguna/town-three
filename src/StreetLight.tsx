@@ -20,7 +20,7 @@ export function StreetLight(props: MeshProps) {
       {target && (
         <spotLight
           target={target}
-          position-y={STREET_LIGHT_HEIGHT}
+          position-y={STREET_LIGHT_HEIGHT / 2}
           position-z={-BULB_LENGTH}
           castShadow
           shadow-mapSize-height={512}
@@ -33,15 +33,7 @@ export function StreetLight(props: MeshProps) {
           power={180}
         >
           <mesh
-            geometry={getCachedBoxGeometry([1, 0.2, BULB_LENGTH])}
-            material={getCachedLambertMaterial({
-              color: 0x441122,
-            })}
-            rotation-x={-0.4}
-            position-y={0.4}
-          />
-          <mesh
-            castShadow
+            position-y={STREET_LIGHT_HEIGHT / 2 + 0.2}
             geometry={getCachedBoxGeometry([0.8, 0.2, BULB_LENGTH * 0.9])}
             material={getCachedPhongMaterial({
               color: 0x441122,
@@ -50,17 +42,25 @@ export function StreetLight(props: MeshProps) {
               shininess: 2000,
             })}
             rotation-x={-0.4}
-            position-y={0.2}
+            position-z={-0.3}
+          />
+          <mesh
+            position-y={STREET_LIGHT_HEIGHT / 2 + 0.4}
+            castShadow
+            geometry={getCachedBoxGeometry([1, 0.2, BULB_LENGTH])}
+            material={getCachedLambertMaterial({
+              color: 0x441122,
+            })}
+            rotation-x={-0.4}
+            position-z={-0.3}
           />
           <mesh
             castShadow
-            position-y={-STREET_LIGHT_HEIGHT / 2}
             position-z={-BULB_LENGTH / 2 + ROD_RADIUS}
             geometry={getCachedCylinderGeometry([
               ROD_RADIUS,
               ROD_RADIUS,
               STREET_LIGHT_HEIGHT,
-              ROD_RADIUS,
             ])}
             material={getCachedLambertMaterial({
               color: 0x441122,
