@@ -30,15 +30,51 @@
 
       * {
         font-family: Sora, sans-serif;
+        user-select: none;
+      }
+
+      body {
+        background-color: #25112a;
       }
 
       .three-html {
         overflow: hidden;
         white-space: nowrap;
       }
+
+      #Loader {
+        color: white;
+        position: fixed;
+        top: 45%;
+        text-align: center;
+        width: 100%;
+      }
+
+      #Loader a {
+        color: white;
+        display: block;
+        margin: 8px;
+      }
     </style>
   </head>
   <body>
+    <div id="Loader">
+      Loading...
+
+      <h1>3D Town by Manoj Bahuguna</h1>
+
+      <p>
+        <a href="https://monob.in" target="_blank" rel="noopener"> monob.in </a>
+
+        <a
+          href="https://linkedin.com/in/BahugunaManoj"
+          target="_blank"
+          rel="noopener"
+        >
+          linkedin.com/in/BahugunaManoj
+        </a>
+      </p>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
 

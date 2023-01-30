@@ -3,7 +3,7 @@ import { PerformanceMonitor, Sky, Stars } from "@react-three/drei";
 import { BuildingRow } from "./BuildingsRow";
 import { type BuildingData } from "./Building";
 import { Control } from "./Control";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Road } from "./Road";
 import { InfoBoard } from "./InfoBoard";
 import { Car } from "./Car";
@@ -27,8 +27,14 @@ const rightBuildings: BuildingData[] = [
 export function Town() {
   const [dpr, setDpr] = useState(1);
 
+  // remove loader
+  useEffect(() => {
+    document.getElementById("Loader")?.remove();
+  }, []);
+
   return (
     <Canvas
+      onLoad={() => console.log("loaded")}
       dpr={dpr}
       shadows="soft"
       camera={{ position: [40, 60, 70], far: 700 }}
