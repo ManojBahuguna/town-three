@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { OrbitControls, OrbitControlsProps } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 
 const maxPanDistance = 50;
 export function Control() {
@@ -37,7 +37,7 @@ export function Control() {
   return (
     <OrbitControls
       ref={controlsRef}
-      dampingFactor={0.02}
+      dampingFactor={0.04}
       minDistance={20}
       maxDistance={130}
       maxPolarAngle={Math.PI * 0.49}

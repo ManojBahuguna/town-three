@@ -7,7 +7,7 @@ import {
 } from "./caches";
 import { useMemo } from "react";
 
-const ROAD_LENGTH = 400;
+const ROAD_LENGTH = 500;
 
 function RoadMarking(props: MeshProps) {
   return (
@@ -33,15 +33,20 @@ export function Road(props: MeshProps) {
   }, []);
 
   const streetLights = useMemo(() => {
-    const startAt = -110;
-    const gap = 40;
-    const count = 6;
+    const startAt = -160;
+    const gap = 50;
+    const count = 7;
+
+    // don't need shadows on lights that are far from view for performance
+    const startShadowAtX = -70;
+    const endShadowAtX = 70;
 
     const list = [];
     let posZ = -8;
     for (let posX = startAt, i = 0; i < count; posX += gap, i++) {
       list.push(
         <StreetLight
+          castShadow={posX >= startShadowAtX && posX <= endShadowAtX}
           key={posX + posZ}
           position-x={posX}
           position-z={posZ}
@@ -56,8 +61,8 @@ export function Road(props: MeshProps) {
   return (
     <mesh
       receiveShadow
-      geometry={getCachedBoxGeometry([ROAD_LENGTH, 1, 20])}
-      material={getCachedPhongMaterial({ color: 0x110008, shininess: 2 })}
+      geometry={getCachedBoxGeometry([ROAD_LENGTH, 1, 22])}
+      material={getCachedLambertMaterial({ color: 0x110008 })}
       {...props}
     >
       {streetLights}
@@ -66,22 +71,28 @@ export function Road(props: MeshProps) {
       <mesh
         receiveShadow
         geometry={getCachedBoxGeometry([ROAD_LENGTH, 1, 0.5])}
-        material={getCachedLambertMaterial({
+        material={getCachedPhongMaterial({
           color: 0xffffff,
+          emissive: 0xffffff,
+          emissiveIntensity: 1,
+          shininess: 5000,
         })}
         position-y={0.05}
-        position-z={9}
+        position-z={10}
       />
 
       {/* Right Road Line */}
       <mesh
         receiveShadow
         geometry={getCachedBoxGeometry([ROAD_LENGTH, 1, 0.5])}
-        material={getCachedLambertMaterial({
+        material={getCachedPhongMaterial({
           color: 0xffffff,
+          emissive: 0xffffff,
+          emissiveIntensity: 1,
+          shininess: 5000,
         })}
         position-y={0.05}
-        position-z={-9}
+        position-z={-10}
       />
 
       {roadMarkings}

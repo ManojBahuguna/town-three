@@ -6,6 +6,7 @@ import { Control } from "./Control";
 import { useState } from "react";
 import { Road } from "./Road";
 import { InfoBoard } from "./InfoBoard";
+import { Car } from "./Car";
 
 // less variants used so that cached geometries can be reused
 const wideFloor = { width: 24, depth: 30 };
@@ -49,8 +50,22 @@ export function Town() {
         rotation-y={-Math.PI / 2}
         rowData={rightBuildings}
       />
-      <Road position-z={50} />
       <InfoBoard position-z={35} position-x={3} />
+      <Road position-z={50} />
+      <Car
+        position-x={-200}
+        position-z={43}
+        position-y={0.5}
+        rotation-y={Math.PI}
+      />
+      <Car
+        position-x={-100}
+        position-z={47}
+        position-y={0.5}
+        rotation-y={Math.PI}
+      />
+      <Car position-x={150} position-z={53} position-y={0.5} />
+      <Car position-x={150} position-z={57} position-y={0.5} />
 
       {/* Environment */}
       <color attach="background" args={[0x222202]} />

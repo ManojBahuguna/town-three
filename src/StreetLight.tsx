@@ -11,7 +11,7 @@ const STREET_LIGHT_HEIGHT = 15;
 const BULB_LENGTH = 3;
 const ROD_RADIUS = 0.15;
 
-export function StreetLight(props: MeshProps) {
+export function StreetLight({ castShadow = true, ...props }: MeshProps) {
   const [target, setTarget] = useState<Mesh | null>(null);
 
   return (
@@ -21,7 +21,7 @@ export function StreetLight(props: MeshProps) {
           target={target}
           position-y={STREET_LIGHT_HEIGHT / 2}
           position-z={-BULB_LENGTH}
-          castShadow
+          castShadow={castShadow}
           shadow-mapSize-height={512}
           shadow-mapSize-width={512}
           color={0xaaaaff}
