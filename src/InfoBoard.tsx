@@ -6,8 +6,8 @@ import {
 } from "./caches";
 import { Html } from "@react-three/drei";
 
-const ROD_HEIGHT = 10;
-const ROD_RADIUS = 0.15;
+const ROD_HEIGHT = 18;
+const ROD_RADIUS = 0.3;
 const BOARD_HEIGHT = 6;
 const BOARD_WIDTH = 12;
 const BOARD_THICKNESS = ROD_RADIUS * 4;

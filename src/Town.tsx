@@ -31,7 +31,7 @@ export function Town() {
     <Canvas
       dpr={dpr}
       shadows="soft"
-      camera={{ position: [30, 60, 70], far: 700 }}
+      camera={{ position: [40, 60, 70], far: 700 }}
     >
       <PerformanceMonitor
         onChange={({ factor }) => setDpr(Math.round(0.4 + 1 * factor))}
@@ -50,7 +50,7 @@ export function Town() {
         rotation-y={-Math.PI / 2}
         rowData={rightBuildings}
       />
-      <InfoBoard position-z={35} position-x={3} />
+      <InfoBoard position-z={30} position-x={3} />
       <Road position-z={50} />
       <Car
         position-x={-200}
@@ -96,7 +96,7 @@ export function Town() {
       <mesh rotation-x={-Math.PI / 2} receiveShadow>
         <circleGeometry args={[500]} />
         {/* <planeGeometry args={[80, 80]} /> */}
-        <meshLambertMaterial color={0x422312} />
+        <meshLambertMaterial color={0x331511} />
       </mesh>
 
       {/* Controls */}

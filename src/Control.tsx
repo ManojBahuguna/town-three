@@ -41,6 +41,8 @@ export function Control() {
       minDistance={20}
       maxDistance={130}
       maxPolarAngle={Math.PI * 0.49}
+      autoRotate
+      autoRotateSpeed={.2}
     />
   );
 }
