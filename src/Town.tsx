@@ -31,7 +31,7 @@ export function Town() {
     <Canvas
       dpr={dpr}
       shadows="soft"
-      camera={{ position: [30, 80, 70], far: 700 }}
+      camera={{ position: [30, 60, 70], far: 700 }}
     >
       <PerformanceMonitor
         onChange={({ factor }) => setDpr(Math.round(0.4 + 1 * factor))}
@@ -65,7 +65,7 @@ export function Town() {
         rotation-y={Math.PI}
       />
       <Car position-x={150} position-z={53} position-y={0.5} />
-      <Car position-x={150} position-z={57} position-y={0.5} />
+      <Car position-x={50} position-z={57} position-y={0.5} />
 
       {/* Environment */}
       <color attach="background" args={[0x222202]} />

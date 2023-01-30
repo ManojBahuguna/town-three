@@ -8,6 +8,7 @@ import {
   getCachedPhongMaterial,
 } from "./caches";
 import { HeadLights } from "./HeadLights";
+import { random } from "./utils";
 
 function CarTyre({
   radius,
@@ -25,9 +26,9 @@ function CarTyre({
   );
 }
 
-function useMoveCar(minSpeed = 30, maxSpeed = 150, distance = 250) {
+function useMoveCar(minSpeed = 20, maxSpeed = 150, distance = 250) {
   const ref = useRef<Mesh | null>(null);
-  const speedRef = useRef(maxSpeed);
+  const speedRef = useRef(random(minSpeed, maxSpeed));
   useFrame((state, delta) => {
     const car = ref.current;
     if (!car) return;
@@ -37,7 +38,7 @@ function useMoveCar(minSpeed = 30, maxSpeed = 150, distance = 250) {
 
     if (Math.abs(car.position.x) > distance) {
       car.position.x = distance * -direction;
-      speedRef.current = Math.random() * (maxSpeed - minSpeed) + minSpeed; // random speed in each run
+      speedRef.current = random(minSpeed, maxSpeed); // random speed in each run
     }
   });
   return ref;

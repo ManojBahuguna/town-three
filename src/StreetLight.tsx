@@ -26,10 +26,10 @@ export function StreetLight({ castShadow = true, ...props }: MeshProps) {
           shadow-mapSize-width={512}
           color={0xaaaaff}
           angle={0.8}
-          intensity={0.2}
+          intensity={0.4}
           penumbra={0.6}
           distance={60}
-          power={180}
+          power={200}
         >
           <mesh
             // bulb (white part)

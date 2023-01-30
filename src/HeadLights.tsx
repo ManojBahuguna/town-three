@@ -24,8 +24,8 @@ export function HeadLights({
           castShadow
           shadow-mapSize-height={512}
           shadow-mapSize-width={512}
-          color={0xddffdd}
-          angle={1}
+          color={0xeeffee}
+          angle={.6}
           intensity={0.5}
           penumbra={0.3}
           distance={30}
